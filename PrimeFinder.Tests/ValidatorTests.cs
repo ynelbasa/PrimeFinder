@@ -44,5 +44,15 @@ namespace PrimeFinder.Tests
             var isValid = Validator.IsProductValid(product);
             isValid.Should().BeFalse();
         }
+
+        [Theory]
+        [InlineData(122333455667)]
+        [InlineData(122334456789)]
+        [InlineData(777788889999)]
+        public void GivenProductSequenceAndLengthIsValid_WhenIsProductValidCalled_ThenShouldReturnTrue(long product)
+        {
+            var isValid = Validator.IsProductValid(product);
+            isValid.Should().BeTrue();
+        }
     }
 }
