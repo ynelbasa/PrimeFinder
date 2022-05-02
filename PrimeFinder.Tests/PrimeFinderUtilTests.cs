@@ -5,7 +5,7 @@ using Xunit;
 
 namespace PrimeFinder.Tests
 {
-    public class PrimeFinderTests
+    public class PrimeFinderUtilTests
     {
         [Theory]
         [InlineData(-2, 0)]
@@ -13,7 +13,7 @@ namespace PrimeFinder.Tests
         [InlineData(-4, -2)]
         public void GivenNegativeMinMax_WhenGetPrimesWithinRangeCalled_ShouldReturnNull(int min, int max)
         {
-            Action act = () => PrimeFinder.GetPrimesWithinRange(min, max);
+            Action act = () => PrimeFinderUtil.GetPrimesWithinRange(min, max);
             act.Should().ThrowExactly<ArgumentException>();
         }
 
@@ -22,7 +22,7 @@ namespace PrimeFinder.Tests
         [InlineData(6, 4)]
         public void GivenMinIsGreaterThanMax_WhenGetPrimesWithinRangeCalled_ShouldReturnNull(int min, int max)
         {
-            Action act = () => PrimeFinder.GetPrimesWithinRange(min, max);
+            Action act = () => PrimeFinderUtil.GetPrimesWithinRange(min, max);
             act.Should().ThrowExactly<ArgumentException>();
         }
 
@@ -32,7 +32,7 @@ namespace PrimeFinder.Tests
         [InlineData(2, 2)]
         public void GivenMinIsEqualMax_WhenGetPrimesWithinRangeCalled_ShouldReturnNull(int min, int max)
         {
-            Action act = () => PrimeFinder.GetPrimesWithinRange(min, max);
+            Action act = () => PrimeFinderUtil.GetPrimesWithinRange(min, max);
             act.Should().ThrowExactly<ArgumentException>();
         }
 
@@ -40,7 +40,7 @@ namespace PrimeFinder.Tests
         public void GivenValidRange_WhenGetPrimesWithinRangeCalled_ShouldReturnCorrectListOfPrimes()
         {
             var expectedPrimes = new List<int> { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
-            var primes = PrimeFinder.GetPrimesWithinRange(1, 20);
+            var primes = PrimeFinderUtil.GetPrimesWithinRange(1, 20);
             primes.Should().BeEquivalentTo(expectedPrimes);
         }
     }
